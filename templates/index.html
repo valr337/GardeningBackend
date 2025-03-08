@@ -7,6 +7,7 @@
 
 {% block body%}
 <div class="content">
+<!--
 
 	<h1>Last synced time: </h1>
 	<button>Force Sync</button>
@@ -18,20 +19,40 @@
 	<h3>Soil moisture <b>5/10</b></h3>
 	<h3>Surrounding Temperature: <b>2/10</b></h3>
 	<h3>Humidity: <b>1/10</b></h3>
-
+	<button>Activate DC motor</button>
+-->
 <!--
-	<h3>Trigger ultrasonic sensor</h3>
-
-	<button>Increase Temperature</button>
-	<button>Decrease Temperature</button>
 continuously monitoring soil moisture, activates watering when levels are low and adapts to environmental
 conditions like temperature and humidity.
 -->
 
+	{% if tasks}
+	<h3>Invalid credentials</h3>
+	{% else %}
+
 	<form action="/" method="POST">
-		<input type="text" name="content" id="content" />
-		<input type="submit" value="Add Task" id="btn_add" />
+		<input type="submit" value="Water" class="btn_add" />
 	</form>
+
+	<form action="/" method="POST">
+		<input type="submit" value="DCmotor" class="btn_add" />
+	</form>
+
+	<table>
+		<tr>
+			<th>Category</th>
+			<th>Value</th>
+		</tr>
+		{% for task in tasks %}
+			<tr>
+				<td>{{task.content}}</td>
+				<td>{{task.created.strftime("%Y-%m-%d")}}</td>
+			</tr>
+		{% endfor %}
+	</table>
+
+	{% endif %}
+
 </div>
 
 {% endblock %}
