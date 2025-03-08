@@ -7,40 +7,27 @@
 
 {% block body%}
 <div class="content">
-	<h1>Water Plant</h1>
 
+	<h1>Last synced time: </h1>
+	<button>Force Sync</button>
 
-	<h1>Surrounding Temperature</h1>
+	<h3>Water Level: <b>5/10</b></h3>
+	<button>Water Plant</button>
+	<h3>Last watered time: </h3>
 
+	<h3>Soil moisture <b>5/10</b></h3>
+	<h3>Surrounding Temperature: <b>2/10</b></h3>
+	<h3>Humidity: <b>1/10</b></h3>
 
-	<h1>Humidity</h1>
+<!--
+	<h3>Trigger ultrasonic sensor</h3>
 
+	<button>Increase Temperature</button>
+	<button>Decrease Temperature</button>
+continuously monitoring soil moisture, activates watering when levels are low and adapts to environmental
+conditions like temperature and humidity.
+-->
 
-	<h1>Trigger ultrasonic sensor</h1>
-
-
-	{% if tasks | length < 1%}
-	<h3>There are no tasks... Create one here!</h3>
-	{% else %}
-	<table>
-		<tr>
-			<th>Task</th>
-			<th>Added</th>
-			<th>Actions</th>
-		</tr>
-		{% for task in tasks %}
-			<tr>
-				<td>{{task.content}}</td>
-				<td>{{task.created.strftime("%Y-%m-%d")}}</td>
-				<td>
-					<a href="/delete/{{task.id}}">Delete</a>
-					<br/>
-					<a href="/edit/{{task.id}}">Edit</a>
-				</td>
-			</tr>
-		{% endfor %}
-	</table>
-	{% endif %}
 	<form action="/" method="POST">
 		<input type="text" name="content" id="content" />
 		<input type="submit" value="Add Task" id="btn_add" />
