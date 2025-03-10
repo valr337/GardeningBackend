@@ -2,7 +2,8 @@
 from flask import Flask, render_template, redirect, request
 from flask_scss import Scss
 from datetime import datetime
-
+auth = False
+values = []
 # My App Setup
 app = Flask(__name__)
 Scss(app)
@@ -13,51 +14,35 @@ Scss(app)
 def index():
     # Add a Task
     if request.method == "POST":
-        current_task = request.form['content']
         try:
+            authentication = auth(request.form['key'])
+            if authentication:
+                values = []
+                values.append(request.form['WaterLevel'])
+                values.append(request.form['WaterLast'])
+                values.append(request.form['SoilMoist'])
+                values.append(request.form['SurroundTemp'])
+                values.append(request.form['Humidity'])
 
+                with open("storage/values.txt","w") as file:
+                    file.write(values)
+                print("Stored values")
+            else:
+                print("Authentication failed")
             return redirect("/")
         except Exception as e:
             print(f"ERROR:{e}")
             return f"ERROR:{e}"
     # See all current tasks
     else:
+        with open("storage/values.txt", "r") as file:
+            values = [line.strip() for line in file]
+        return render_template('index.html', tasks=values)
 
-        return render_template('index.html', tasks=tasks)
-
-#https://www.home.com/delete
-# Delete an Item
-@app.route("/delete/<int:id>")
-def delete(id:int):
-
-    try:
-
-        return redirect("/")
-    except Exception as e:
-        return f"ERROR:{e}"
-    
-    
-
-# Edit an item
-@app.route("/edit/<int:id>", methods=["GET","POST"])
-def edit(id:int):
-
-    if request.method == "POST":
-
-        try:
-
-            return redirect("/")
-        except Exception as e:
-            return f"Error:{e}"
-    else:
-        return render_template('edit.html',task=task)
-
-
-
-def checkcredientials(username,password):
-    with open("storage/pwd.txt","r") as file:
+def auth(key):
+    with open("storage/pwd.txt", "r") as file:
         contents = file.readlines()
-        if username == contents[0] and password == contents[1]:
+        if key == contents:
             return True
     return False
 

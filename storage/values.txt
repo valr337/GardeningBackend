@@ -1,0 +1,5 @@
+WaterLevel
+WaterLast
+SoilMoist
+SurroundTemp
+Humidity

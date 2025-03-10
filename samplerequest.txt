@@ -1,0 +1,6 @@
+admin12345
+WaterLevel
+WaterLast
+SoilMoist
+SurroundTemp
+Humidity
