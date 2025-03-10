@@ -54,6 +54,14 @@ def edit(id:int):
 
 
 
+def checkcredientials(username,password):
+    with open("storage/pwd.txt","r") as file:
+        contents = file.readlines()
+        if username == contents[0] and password == contents[1]:
+            return True
+    return False
+
+
 # Runner and Debugger
 if __name__ == "__main__":       
     app.run(debug=True)
