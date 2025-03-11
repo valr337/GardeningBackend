@@ -26,16 +26,12 @@ continuously monitoring soil moisture, activates watering when levels are low an
 conditions like temperature and humidity.
 -->
 
-	{% if tasks %}
+	{% if tasks.length == 1 %}
 	<h3>Invalid credentials</h3>
 	{% else %}
 
 	<form action="/" method="POST">
 		<input type="submit" value="Water" class="btn_add" />
-	</form>
-
-	<form action="/" method="POST">
-		<input type="submit" value="DCmotor" class="btn_add" />
 	</form>
 
 	<table>
@@ -45,8 +41,8 @@ conditions like temperature and humidity.
 		</tr>
 		{% for task in tasks %}
 			<tr>
-				<td>{{task.content}}</td>
-				<td>{{task.created.strftime("%Y-%m-%d")}}</td>
+				<td>{{task}}</td>
+				<td>{{task}}</td>
 			</tr>
 		{% endfor %}
 	</table>
