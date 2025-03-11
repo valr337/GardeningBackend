@@ -4,6 +4,8 @@ from flask_scss import Scss
 from datetime import datetime
 auth = False
 values = []
+value_name = ["Water Level", "Last Watered Time", "Soil Moisture", "Surrounding Temperature", "Humidity"]
+
 # My App Setup
 app = Flask(__name__)
 Scss(app)
@@ -37,7 +39,8 @@ def index():
     else:
         with open("storage/values.txt", "r") as file:
             values = [line.strip() for line in file]
-        return render_template('index.html', tasks=values)
+        print(values)
+        return render_template('index.html', tasks=values, tasks_name=value_name)
 
 def auth(key):
     with open("storage/pwd.txt", "r") as file:

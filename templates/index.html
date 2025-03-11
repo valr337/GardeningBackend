@@ -39,10 +39,10 @@ conditions like temperature and humidity.
 			<th>Category</th>
 			<th>Value</th>
 		</tr>
-		{% for task in tasks %}
+		{% for i in range(5) %}
 			<tr>
-				<td>{{task}}</td>
-				<td>{{task}}</td>
+				<td>{{tasks_name[i]}}</td>
+				<td>{{tasks[i]}}</td>
 			</tr>
 		{% endfor %}
 	</table>

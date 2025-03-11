@@ -1,5 +1,5 @@
-WaterLevel
-WaterLast
-SoilMoist
-SurroundTemp
-Humidity
+5
+11:51PM
+22
+5
+3
