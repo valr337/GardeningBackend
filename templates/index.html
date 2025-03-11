@@ -26,12 +26,14 @@ continuously monitoring soil moisture, activates watering when levels are low an
 conditions like temperature and humidity.
 -->
 
-	{% if tasks.length == 1 %}
-	<h3>Invalid credentials</h3>
-	{% else %}
-
 	<form action="/" method="POST">
-		<input type="submit" value="Water" class="btn_add" />
+  		<input type="text" name="key" value="admin12345" required><br>
+		<input type="text" name="WaterLevel" value="6" required><br>
+		<input type="text" name="WaterLast" value="00:45" required><br>
+		<input type="text" name="SoilMoist" value="1" required><br>
+		<input type="text" name="SurroundTemp" value="2" required><br>
+		<input type="text" name="Humidity" value="3" required><br>
+  		<button type="submit">Submit</button>
 	</form>
 
 	<table>
@@ -47,7 +49,6 @@ conditions like temperature and humidity.
 		{% endfor %}
 	</table>
 
-	{% endif %}
 
 </div>
 
