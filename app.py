@@ -10,6 +10,9 @@ value_name = ["Water Level", "Last Watered Time", "Soil Moisture", "Surrounding 
 app = Flask(__name__)
 Scss(app)
 
+#path = "/home/DRevenant/GardeningSysBackend/"
+path = ""
+
 # Routes to Webpages
 # Home page
 @app.route("/",methods=["POST","GET"])
@@ -27,7 +30,7 @@ def index():
                 values.append(request.form['SurroundTemp'])
                 values.append(request.form['Humidity'])
 
-                with open("storage/values.txt","w") as file:
+                with open(path+"storage/values.txt","w") as file:
                     file.write('\n'.join(values))
                 print("Stored values")
             else:
@@ -38,13 +41,13 @@ def index():
             return f"ERROR:{e}"
     # See all current tasks
     else:
-        with open("storage/values.txt", "r") as file:
+        with open(path+"storage/values.txt", "r") as file:
             values = [line.strip() for line in file]
         print(values)
         return render_template('index.html', tasks=values, tasks_name=value_name)
 
 def auth(key):
-    with open("storage/pwd.txt", "r") as file:
+    with open(path+"storage/pwd.txt", "r") as file:
         contents = file.readlines()
         if key.strip() == contents[0].strip() :
             return True
