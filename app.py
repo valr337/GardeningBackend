@@ -19,15 +19,16 @@ def index():
         try:
             authentication = auth(request.form['key'])
             if authentication:
-                values = []
-                values.append(request.form['WaterLevel'])
-                values.append(request.form['WaterLast'])
-                values.append(request.form['SoilMoist'])
-                values.append(request.form['SurroundTemp'])
-                values.append(request.form['Humidity'])
-
-                with open("storage/values.txt","w") as file:
-                    file.write(values)
+                print("Passed auth")
+                # values = []
+                # # values.append(request.form['WaterLevel'])
+                # # values.append(request.form['WaterLast'])
+                # # values.append(request.form['SoilMoist'])
+                # # values.append(request.form['SurroundTemp'])
+                # # values.append(request.form['Humidity'])
+                # #
+                # # with open("storage/values.txt","w") as file:
+                # #     file.write(values)
                 print("Stored values")
             else:
                 print("Authentication failed")
@@ -45,7 +46,7 @@ def index():
 def auth(key):
     with open("storage/pwd.txt", "r") as file:
         contents = file.readlines()
-        if key == contents:
+        if key.strip() == contents[0].strip() :
             return True
     return False
 
