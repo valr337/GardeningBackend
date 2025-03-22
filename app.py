@@ -21,7 +21,6 @@ path = ""
 # Home page
 @app.route("/", methods=["POST", "GET"])
 def index():
-    # Add a Task
     if request.method == "POST":
         try:
             authentication = auth(request.form['key'])
@@ -44,13 +43,6 @@ def index():
     else:
         #if GET, then read values from file
         values = retrievevalues()
-
-        prevtime = convert(values[0])
-        currenttime = datetime.now()
-
-        time_difference = round((currenttime - prevtime).total_seconds())
-        currenttime = currenttime.strftime(time_format)
-        values[0] = str(currenttime) + "(" + str(time_difference) + " seconds ago)"
         print(values)
         return render_template('index.html', tasks=values, tasks_name=value_name)
 
@@ -68,11 +60,13 @@ def retrievevalues():
         values = [line.strip() for line in file]
         return values
 
+
 def convert(date_time):
     format = "%H:%M:%S %Y-%m-%d"
     datetime_str = datetime.strptime(date_time, time_format)
 
     return datetime_str
+
 
 # Runner and Debugger
 if __name__ == "__main__":
