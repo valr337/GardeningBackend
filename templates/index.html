@@ -27,6 +27,7 @@ conditions like temperature and humidity.
 -->
 
 	<form action="/" method="POST">
+		<button type="submit">Force sync</button><br>
   		<input type="text" name="key" value="admin12345" placeholder="server key" required><br>
 		<input type="text" name="WaterLevel" value="6" placeholder="Water Level" required><br>
 		<input type="text" name="WaterLast" value="00:45" placeholder="Last watered" required><br>
@@ -41,7 +42,7 @@ conditions like temperature and humidity.
 			<th>Category</th>
 			<th>Value</th>
 		</tr>
-		{% for i in range(5) %}
+		{% for i in range(6) %}
 			<tr>
 				<td>{{tasks_name[i]}}</td>
 				<td>{{tasks[i]}}</td>
