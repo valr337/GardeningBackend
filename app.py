@@ -47,6 +47,11 @@ def index():
         return render_template('index.html', tasks=values, tasks_name=value_name)
 
 
+@app.route("/data",methods=["GET"])
+def getdata():
+    return retrievevalues()
+
+
 def auth(key):
     with open(path + "storage/pwd.txt", "r") as file:
         contents = file.readlines()
