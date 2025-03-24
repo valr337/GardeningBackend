@@ -3,11 +3,10 @@ from datetime import datetime
 
 from flask import Flask, render_template, redirect, request
 from flask_scss import Scss
-from time import localtime, strftime, strptime
 
 auth = False
 value_name = ["Last sync time", "Water Level", "Last Watered Time", "Soil Moisture", "Surrounding Temperature",
-              "Humidity"]
+              "Humidity","Bird Count","Light"]
 time_format = "%H:%M:%S %Y-%m-%d"
 # My App Setup
 app = Flask(__name__)
@@ -30,7 +29,9 @@ def index():
                           request.form['WaterLast'],
                           request.form['SoilMoist'],
                           request.form['SurroundTemp'],
-                          request.form['Humidity']]
+                          request.form['Humidity'],
+                          request.form['BirdCount'],
+                          request.form['Light']]
                 with open(path + "storage/values.txt", "w") as file:
                     file.write('\n'.join(values))
                 print("Stored values")
