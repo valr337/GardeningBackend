@@ -53,17 +53,29 @@ def index():
 def getdata():
     return retrievevalues()
 
-
-@app.route("/send",methods=["GET"])
-def sendrequest():
+@app.route("/waterplant",methods=["GET"])
+def waterplant():
     data = {
-        'username': 'john_doe',
-        'password': 'secret123'
+        'waterplant': '1',
+        'motor': '0'
     }
 
     #response = requests.post('https://api.example.com/login', data=data)
     #print(response.text)
-    print("sent!")
+    print("water!")
+
+    return redirect("/")
+
+@app.route("/activatemotor",methods=["GET"])
+def activatemotor():
+    data = {
+        'waterplant': '0',
+        'motor': '1'
+    }
+
+    #response = requests.post('https://api.example.com/login', data=data)
+    #print(response.text)
+    print("motor!")
 
     return redirect("/")
 
