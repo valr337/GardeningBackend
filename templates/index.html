@@ -7,32 +7,23 @@
 
 {% block body%}
 <div class="content">
-<!--
 
-	<h1>Last synced time: </h1>
-	<button>Force Sync</button>
+<!--	<form action="/" method="GET">-->
+<!--		<button type="submit">Force sync</button><br>-->
+<!--  		<input type="text" name="key" value="admin12345" placeholder="server key" required><br>-->
+<!--		<input type="text" name="WaterLevel" value="6" placeholder="Water Level" required><br>-->
+<!--		<input type="text" name="WaterLast" value="00:45" placeholder="Last watered" required><br>-->
+<!--		<input type="text" name="SoilMoist" value="1" placeholder="Soil moisture" required><br>-->
+<!--		<input type="text" name="SurroundTemp" value="2" placeholder="Surrounding Temperature" required><br>-->
+<!--		<input type="text" name="Humidity" value="3" placeholder="Humidity" required><br>-->
+<!--		<input type="text" name="BirdCount" value="3" placeholder="Humidity" required><br>-->
+<!--		<input type="text" name="Light" value="3" placeholder="Humidity" required><br>-->
+<!--  		<button type="submit">Submit</button>-->
+<!--	</form>-->
 
-	<h3>Water Level: <b>5/10</b></h3>
-	<button>Water Plant</button>
-	<h3>Last watered time: </h3>
-
-	<h3>Soil moisture <b>5/10</b></h3>
-	<h3>Surrounding Temperature: <b>2/10</b></h3>
-	<h3>Humidity: <b>1/10</b></h3>
-	<button>Activate DC motor</button>
--->
-
-	<form action="/" method="POST">
+	<!-- Duplicate for other send functions -->
+	<form action="/send" method="GET">
 		<button type="submit">Force sync</button><br>
-  		<input type="text" name="key" value="admin12345" placeholder="server key" required><br>
-		<input type="text" name="WaterLevel" value="6" placeholder="Water Level" required><br>
-		<input type="text" name="WaterLast" value="00:45" placeholder="Last watered" required><br>
-		<input type="text" name="SoilMoist" value="1" placeholder="Soil moisture" required><br>
-		<input type="text" name="SurroundTemp" value="2" placeholder="Surrounding Temperature" required><br>
-		<input type="text" name="Humidity" value="3" placeholder="Humidity" required><br>
-		<input type="text" name="BirdCount" value="3" placeholder="Humidity" required><br>
-		<input type="text" name="Light" value="3" placeholder="Humidity" required><br>
-  		<button type="submit">Submit</button>
 	</form>
 
 	<table>

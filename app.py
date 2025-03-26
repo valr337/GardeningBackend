@@ -3,6 +3,7 @@ from datetime import datetime
 
 from flask import Flask, render_template, redirect, request
 from flask_scss import Scss
+import requests
 
 auth = False
 value_name = ["Last sync time", "Water Level", "Last Watered Time", "Soil Moisture", "Surrounding Temperature",
@@ -51,6 +52,20 @@ def index():
 @app.route("/data",methods=["GET"])
 def getdata():
     return retrievevalues()
+
+
+@app.route("/send",methods=["GET"])
+def sendrequest():
+    data = {
+        'username': 'john_doe',
+        'password': 'secret123'
+    }
+
+    #response = requests.post('https://api.example.com/login', data=data)
+    #print(response.text)
+    print("sent!")
+
+    return redirect("/")
 
 
 def auth(key):
