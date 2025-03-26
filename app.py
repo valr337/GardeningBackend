@@ -13,6 +13,9 @@ time_format = "%H:%M:%S %Y-%m-%d"
 app = Flask(__name__)
 Scss(app)
 
+#CHANGE TO pi IP and port
+IP = "127.0.0.1:5050"
+
 #path = "/home/DRevenant/GardeningSysBackend/"
 path = ""
 
@@ -60,8 +63,7 @@ def waterplant():
         'motor': '0'
     }
 
-    #response = requests.post('https://api.example.com/login', data=data)
-    #print(response.text)
+    requests.post(IP, data=data)
     print("water!")
 
     return redirect("/")
@@ -73,8 +75,7 @@ def activatemotor():
         'motor': '1'
     }
 
-    #response = requests.post('https://api.example.com/login', data=data)
-    #print(response.text)
+    requests.post(IP, data=data)
     print("motor!")
 
     return redirect("/")
